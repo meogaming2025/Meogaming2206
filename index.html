@@ -3,13 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang web đầu tiên của tôi</title>
-    <link rel="stylesheet" href="style.css?v=2">
+    <title>Script Forsaken</title>
+    <link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
-    <h1>Chào mừng đến với trang web của tôi!</h1>
-    <p>Đây là đoạn văn bản đầu tiên hiển thị trên trang web.</p>
-    <button onclick="thongBao()">Bấm vào đây</button>
+    <div class="container">
+        <h1>script forsaken</h1>
+        
+        <div class="input-box">
+            <!-- Ô chứa văn bản không sửa được, chỉ đọc và copy -->
+            <input type="text" id="scriptText" value="loadstring(game:HttpGet('https://example.com/script.lua'))()" readonly>
+            <button onclick="copyScript()">Copy</button>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
