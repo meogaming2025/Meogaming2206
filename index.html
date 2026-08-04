@@ -4,19 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Script Forsaken</title>
-    <link rel="stylesheet" href="style.css?v=3">
+    <link rel="stylesheet" href="style.css?v=5">
 </head>
 <body>
     <div class="container">
         <h1>script forsaken</h1>
         
         <div class="input-box">
-            <!-- Ô chứa văn bản không sửa được, chỉ đọc và copy -->
             <input type="text" id="scriptText" value="loadstring(game:HttpGet('https://example.com/script.lua'))()" readonly>
             <button onclick="copyScript()">Copy</button>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        function copyScript() {
+            var copyText = document.getElementById("scriptText");
+            
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(copyText.value).then(function() {
+                    alert("Đã copy script thành công!");
+                }).catch(function() {
+                    forceCopy(copyText);
+                });
+            } else {
+                forceCopy(copyText);
+            }
+        }
+
+        function forceCopy(el) {
+            el.removeAttribute('readonly');
+            el.select();
+            el.setSelectionRange(0, 99999);
+            try {
+                document.execCommand('copy');
+                alert("Đã copy script thành công!");
+            } catch (err) {
+                alert("Hãy nhấn giữ vào ô chữ để copy thủ công nhé!");
+            }
+            el.setAttribute('readonly', 'true');
+        }
+    </script>
 </body>
 </html>
