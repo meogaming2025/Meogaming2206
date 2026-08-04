@@ -1,6 +1,5 @@
 body {
     font-family: Arial, sans-serif;
-    /* Tạo màu nền xanh đen sâu thẳm giống giao diện không gian */
     background-color: #050b18;
     background-image: 
         radial-gradient(circle at 20% 30%, rgba(29, 78, 216, 0.4) 0%, transparent 40%),
@@ -8,32 +7,61 @@ body {
         linear-gradient(to bottom, #030712, #0b0f19);
     background-attachment: fixed;
     color: #ffffff;
-    text-align: center;
-    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     margin: 0;
+}
+
+.container {
+    text-align: center;
+    width: 90%;
+    max-width: 500px;
+    padding: 20px;
 }
 
 h1 {
     color: #ffffff;
-    text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+    font-size: 28px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px rgba(59, 130, 246, 0.6);
+    margin-bottom: 25px;
 }
 
-p {
-    color: #94a3b8;
+.input-box {
+    display: flex;
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(59, 130, 246, 0.5);
+    border-radius: 8px;
+    padding: 8px;
+    box-shadow: 0 0 20px rgba(29, 78, 216, 0.3);
 }
 
-button {
+.input-box input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #93c5fd;
+    font-size: 14px;
+    padding: 10px;
+    outline: none;
+    text-overflow: ellipsis;
+}
+
+.input-box button {
     background: linear-gradient(135deg, #1d4ed8, #2563eb);
     color: white;
-    padding: 12px 24px;
-    border: 1px solid rgba(59, 130, 246, 0.6);
-    border-radius: 8px;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
     cursor: pointer;
-    box-shadow: 0 0 15px rgba(29, 78, 216, 0.4);
     font-weight: bold;
+    transition: 0.2s;
 }
 
-button:hover {
+.input-box button:hover {
     background: linear-gradient(135deg, #2563eb, #3b82f6);
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.7);
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.6);
 }
