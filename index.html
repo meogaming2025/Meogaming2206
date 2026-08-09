@@ -32,7 +32,20 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             text-shadow: 0 0 15px rgba(59, 130, 246, 0.6);
+            margin-bottom: 30px;
+        }
+
+        .script-group {
             margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .script-label {
+            color: #93c5fd;
+            font-size: 14px;
+            margin-bottom: 8px;
+            font-weight: bold;
+            display: block;
         }
 
         .input-box {
@@ -41,34 +54,27 @@
             border: 1px solid rgba(59, 130, 246, 0.5);
             border-radius: 8px;
             padding: 8px;
-            box-shadow: 0 0 20px rgba(29, 78, 216, 0.3);
-            margin-bottom: 15px;
+            box-shadow: 0 0 15px rgba(29, 78, 216, 0.2);
         }
 
         .input-box input {
             flex: 1;
             background: transparent;
             border: none;
-            color: #93c5fd;
-            font-size: 14px;
+            color: #ffffff;
+            font-size: 13px;
             padding: 10px;
             outline: none;
-            text-overflow: ellipsis;
         }
 
         .input-box button {
             background: linear-gradient(135deg, #1d4ed8, #2563eb);
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 8px 16px;
             border-radius: 6px;
             cursor: pointer;
             font-weight: bold;
-        }
-
-        .input-box button:hover {
-            background: linear-gradient(135deg, #2563eb, #3b82f6);
-            box-shadow: 0 0 10px rgba(59, 130, 246, 0.6);
         }
     </style>
 </head>
@@ -76,56 +82,52 @@
     <div class="container">
         <h1>script forsaken</h1>
         
-        <!-- Ô số 1 -->
-        <div class="input-box">
-            <input type="text" id="scriptText1" value="loadstring(game:HttpGet('https://example.com/script1.lua'))()" readonly>
-            <button onclick="copyScript('scriptText1')">Copy</button>
+        <!-- Các nhóm script -->
+        <div class="script-group">
+            <span class="script-label">Script Name 1</span>
+            <div class="input-box">
+                <input type="text" id="s1" value="loadstring(game:HttpGet('...'))()" readonly>
+                <button onclick="copyScript('s1')">Copy</button>
+            </div>
         </div>
 
-        <!-- Ô số 2 -->
-        <div class="input-box">
-            <input type="text" id="scriptText2" value="loadstring(game:HttpGet('https://example.com/script2.lua'))()" readonly>
-            <button onclick="copyScript('scriptText2')">Copy</button>
+        <div class="script-group">
+            <span class="script-label">Script Name 2</span>
+            <div class="input-box">
+                <input type="text" id="s2" value="loadstring(game:HttpGet('...'))()" readonly>
+                <button onclick="copyScript('s2')">Copy</button>
+            </div>
         </div>
 
-        <!-- Ô số 3 -->
-        <div class="input-box">
-            <input type="text" id="scriptText3" value="loadstring(game:HttpGet('https://example.com/script3.lua'))()" readonly>
-            <button onclick="copyScript('scriptText3')">Copy</button>
+        <div class="script-group">
+            <span class="script-label">Script Name 3</span>
+            <div class="input-box">
+                <input type="text" id="s3" value="loadstring(game:HttpGet('...'))()" readonly>
+                <button onclick="copyScript('s3')">Copy</button>
+            </div>
         </div>
 
-        <!-- Ô số 4 -->
-        <div class="input-box">
-            <input type="text" id="scriptText4" value="loadstring(game:HttpGet('https://example.com/script4.lua'))()" readonly>
-            <button onclick="copyScript('scriptText4')">Copy</button>
+        <div class="script-group">
+            <span class="script-label">Script Name 4</span>
+            <div class="input-box">
+                <input type="text" id="s4" value="loadstring(game:HttpGet('...'))()" readonly>
+                <button onclick="copyScript('s4')">Copy</button>
+            </div>
         </div>
     </div>
 
     <script>
         function copyScript(id) {
-            var copyText = document.getElementById(id);
+            var el = document.getElementById(id);
             if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(copyText.value).then(function() {
-                    alert("Đã copy script thành công!");
-                }).catch(function() {
-                    forceCopy(copyText);
-                });
+                navigator.clipboard.writeText(el.value).then(() => alert("Đã copy!"));
             } else {
-                forceCopy(copyText);
-            }
-        }
-
-        function forceCopy(el) {
-            el.removeAttribute('readonly');
-            el.select();
-            el.setSelectionRange(0, 99999);
-            try {
+                el.removeAttribute('readonly');
+                el.select();
                 document.execCommand('copy');
-                alert("Đã copy script thành công!");
-            } catch (err) {
-                alert("Hãy nhấn giữ vào ô chữ để copy thủ công nhé!");
+                el.setAttribute('readonly', 'true');
+                alert("Đã copy!");
             }
-            el.setAttribute('readonly', 'true');
         }
     </script>
 </body>
