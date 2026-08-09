@@ -4,21 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Script Forsaken</title>
-    <link rel="stylesheet" href="style.css?v=5">
+    <link rel="stylesheet" href="style.css?v=6">
 </head>
 <body>
     <div class="container">
         <h1>script forsaken</h1>
         
+        <!-- Ô số 1 -->
         <div class="input-box">
-            <input type="text" id="scriptText" value="loadstring(game:HttpGet('https://example.com/script.lua'))()" readonly>
-            <button onclick="copyScript()">Copy</button>
+            <input type="text" id="scriptText1" value="loadstring(game:HttpGet('https://example.com/script1.lua'))()" readonly>
+            <button onclick="copyScript('scriptText1')">Copy</button>
+        </div>
+
+        <!-- Ô số 2 -->
+        <div class="input-box">
+            <input type="text" id="scriptText2" value="loadstring(game:HttpGet('https://example.com/script2.lua'))()" readonly>
+            <button onclick="copyScript('scriptText2')">Copy</button>
+        </div>
+
+        <!-- Ô số 3 -->
+        <div class="input-box">
+            <input type="text" id="scriptText3" value="loadstring(game:HttpGet('https://example.com/script3.lua'))()" readonly>
+            <button onclick="copyScript('scriptText3')">Copy</button>
+        </div>
+
+        <!-- Ô số 4 -->
+        <div class="input-box">
+            <input type="text" id="scriptText4" value="loadstring(game:HttpGet('https://example.com/script4.lua'))()" readonly>
+            <button onclick="copyScript('scriptText4')">Copy</button>
         </div>
     </div>
 
     <script>
-        function copyScript() {
-            var copyText = document.getElementById("scriptText");
+        function copyScript(id) {
+            var copyText = document.getElementById(id);
             
             if (navigator.clipboard && navigator.clipboard.writeText) {
                 navigator.clipboard.writeText(copyText.value).then(function() {
